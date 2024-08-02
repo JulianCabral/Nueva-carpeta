@@ -13,8 +13,14 @@
  
         <div class="menu-creation">
             <h1>Creacion del menú</h1>
-            <p>Las categorías le permiten navegar a los usuarios dentro de tu menú en la app</p>
+            <p></p>
+
+            <hr>
+            <p> DISCLAIMER:  funcionalidad beta, no elimina datos invididuales, no valida formularios, no carga visuales ni imagenes</p>
+            <hr>
+            <button class="deleteall-btn" id="deleteall-btn">Eliminar Datos</button>
             <button class="export-btn" id="export-btn">Exportar a Excel</button>
+            
             <button class="add-section-btn">Agregar una sección</button>
             <hr>
             <div class="menu-sections" id="menu-sections">
@@ -210,6 +216,7 @@
         const closeModalButton = document.querySelector('.close-modal');
         const menuSectionsContainer = document.getElementById('menu-sections');
         const exportButton = document.getElementById('export-btn');
+        const deleteallButton = document.getElementById('deleteall-btn');
         const formProductSection = document.getElementById('form-product-section');
         const productForm = document.getElementById('product-form');
         const esPromocionCheckbox = document.getElementById('es-promocion');
@@ -343,6 +350,9 @@
 
             // Actualiza la lista de secciones
             renderSections();
+
+                                // Refresca la página
+                                location.reload();
         });
 
         // Maneja el envío del formulario de producto
@@ -425,6 +435,9 @@
 
             // Actualiza la lista de secciones
             renderSections();
+
+                                // Refresca la página
+                                location.reload();
         });
 
         // Maneja el checkbox de "Es promoción"
@@ -701,6 +714,9 @@ function renderSections() {
 
         // Actualiza la lista de grupos de opcionales
         renderOptionGroups(currentProductId, document.getElementById(`option-groups-container-${currentProductId}`));
+
+                    // Refresca la página
+                    location.reload();
         });
 
         // Maneja el envío del formulario de item de opcional
@@ -760,6 +776,9 @@ function renderSections() {
 
         // Actualiza la lista de items de opcionales
         renderOptionItems(currentOptionGroupId, document.getElementById(`option-items-container-${currentOptionGroupId}`));
+
+                            // Refresca la página
+                            location.reload();
         });
 
         // Función para exportar a Excel
@@ -856,6 +875,15 @@ function renderSections() {
             XLSX.writeFile(workbook, 'menu_data.xlsx');
         });
 
+
+        // Función para borrar el localStorage y refrescar la página
+        deleteallButton.addEventListener('click', () => {
+            // Borra todo el localStorage
+            localStorage.clear();
+
+            // Refresca la página
+            location.reload();
+        });
         // Renderiza las secciones al cargar la página
         renderSections();
 
