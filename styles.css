@@ -1,0 +1,345 @@
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*height: 100vh;*/
+  margin: 0;
+  background-color: #f8f8f8;
+}
+
+.container {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.menu-preview {
+  padding: 1.25rem;
+  border-right: 1px solid #ccc;
+  width: 18.75rem; /* 300px */
+}
+
+.phone-preview {
+  width: 12.5rem; /* 200px */
+  height: 25rem; /* 400px */
+  border: 1px solid #ccc;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  position: relative;
+  background-color: #f8f8f8;
+}
+
+.menu-header {
+  background-color: #efefef;
+  padding: 0.825rem;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc; /* Línea divisoria */
+}
+
+.menu-content {
+  padding: 0.625rem;
+  height: calc(100% - 2.5rem); /* Ajuste la altura del contenido */
+  overflow-y: auto; /* Barra de desplazamiento vertical */
+}
+
+.menu-creation {
+  padding: 1.25rem;
+  max-width: 40.00rem; 
+  flex-grow: 1; /* Ajusta el ancho para ocupar el espacio restante */
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  color: #333;
+}
+
+p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+
+.add-section-btn {
+  background-color: #ff0055;
+  color: white;
+  padding: 0.625rem 0.9375rem;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición de color */
+}
+
+.add-section-btn:hover {
+  background-color: #e6004d;
+}
+
+.menu-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.menu-section {
+  background-color: #efefef;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.menu-section:hover {
+  background-color: #ddd;
+}
+
+.add-product-btn {
+  position: absolute;
+  top: 0.3125rem;
+  right: 0.3125rem;
+  background-color: #ff0055;
+  color: white;
+  padding: 0.3125rem 0.625rem;
+  margin:0.2rem;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-product-btn:hover {
+  background-color: #e6004d;
+}
+
+/* Estilos para el formulario */
+.form-section {
+  background-color: #efefef;
+  padding: 1.25rem;
+  border-radius: 0.3125rem;
+  display: none; /* Oculta el formulario por defecto */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 25rem; /* 400px */
+  z-index: 100; 
+  box-shadow: 0 0.625rem 0.625rem rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  background-color: #ccc;
+  color: white;
+  padding: 0.3125rem 0.625rem;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-modal:hover {
+  background-color: #999;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.3125rem;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.625rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem;
+}
+
+.add-horario-btn {
+  background-color: #ff0055;
+  color: white;
+  padding: 0.625rem 0.9375rem;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-horario-btn:hover {
+  background-color: #e6004d;
+}
+
+.horarios-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-top: 0.625rem;
+}
+
+.horario-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.horario-options {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.remove-horario-btn {
+  background-color: #ccc;
+  color: white;
+  padding: 0.3125rem 0.625rem;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  margin-left: 0.625rem;
+  transition: background-color 0.3s ease;
+}
+
+.remove-horario-btn:hover {
+  background-color: #999;
+}
+
+/* Estilos para el botón de exportar */
+.export-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.625rem 0.9375rem;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  margin-top: 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.export-btn:hover {
+  background-color: #3e8e41;
+}
+
+/* Estilos para las opciones */
+.option-group {
+  background-color: #d1d1d1;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  position: relative; 
+  margin: 0.625rem;
+  transition: background-color 0.3s ease;
+}
+
+.option-group:hover {
+  background-color: #ccc;
+}
+
+.product {
+  border: 1px solid #808080;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  position: relative; 
+  margin-top: 0.625rem;
+  transition: background-color 0.3s ease;
+}
+
+.product:hover {
+ background-color: #9e9e9e;
+}
+
+
+.option-group .option-items,
+.product .option-items {
+  display: flex; /* Si quieres que los elementos se alineen horizontalmente */
+  flex-direction: column; /* Si quieres que los elementos se alineen verticalmente */
+  gap: 0.625rem; /* Espacio entre los elementos */
+}
+
+.option-group .option-items p,
+.product .option-items p {
+  margin: 0; /* Quita el margen por defecto del párrafo */
+  font-size: 1rem; /* Define el tamaño de la fuente del texto */
+  color: #333; /* Define el color del texto */
+}
+
+.option-group .option-items button,
+.product .option-items button {
+  padding: 0.5rem 0.9375rem;
+  border: none;
+  border-radius: 0.3125rem;
+  background-color: #ff0055;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.option-group .option-items button:hover,
+.product .option-items button:hover {
+  background-color: #e6004d;
+}
+
+.option-item {
+  background-color: #f36b98;
+  margin: 0.625rem;
+  border-radius: 0.3125rem;
+  padding: 0.625rem;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.option-item:hover {
+  background-color: #e6004d;
+}
+
+
+
+
+
+
+
+.menu-section {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+}
+
+.menu-section h3 {
+  margin-top: 0;
+}
+
+.add-product-btn {
+  /*background-color: #1397fb;*/
+  background-color: #ff0055;
+  color: white;
+  padding: 0.2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.section-image {
+  width: 100%;
+  max-height: 10rem;
+  object-fit: fill;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem; 
+}
+
+.product-image {
+  width: 10rem;
+  max-height: 10rem;
+  object-fit: fill;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0.3125rem; 
+}

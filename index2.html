@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Ejemplo</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+ 
+        <div class="menu-creation">
+            <h1>Creacion del menú</h1>
+            <p>Las categorías le permiten navegar a los usuarios dentro de tu menú en la app</p>
+            <button class="export-btn" id="export-btn">Exportar a Excel</button>
+            <button class="add-section-btn">Agregar una sección</button>
+            <hr>
+            <div class="menu-sections" id="menu-sections">
+                <!-- Aquí se mostrarán las secciones -->
+            </div>
+            <div class="form-section" id="form-section">
+                <button class="close-modal">X</button>
+                <h2>Nueva sección</h2>
+                <form id="section-form">
+                    <div>
+                        <label for="nombre-menu" class="form-label">Nombre del Menú:</label>
+                        <input type="text" id="nombre-menu" name="nombre-menu" class="form-input" >
+                    </div>
+                    <div>
+                        <label for="imagen-menu" class="form-label">Imagen del Menú (URL):</label>
+                        <input type="url" id="imagen-menu" name="imagen-menu" class="form-input" >
+                    </div>
+                    <div>
+                        <label for="imagen-banner" class="form-label">Imagen Banner (URL):</label>
+                        <input type="url" id="imagen-banner" name="imagen-banner" class="form-input" >
+                    </div>
+                    <div>
+                        <button type="button" class="add-horario-btn">Agregar Horario</button>
+                    </div>
+                    <div class="horarios-container" id="horarios-container">
+                        <!-- Aquí se agregarán los horarios dinámicamente -->
+                    </div>
+                    <button type="submit" class="add-section-btn">Guardar Sección</button>
+                </form>
+            </div>
+            <div class="form-section" id="form-product-section">
+                <button class="close-modal">X</button>
+                <h2>Nuevo Producto</h2>
+                <form id="product-form">
+                    <div>
+                        <label for="nombre-producto" class="form-label">Nombre del Producto:</label>
+                        <input type="text" id="nombre-producto" name="nombre-producto" class="form-input" >
+                    </div>
+                    <div>
+                        <label for="descripcion-producto" class="form-label">Descripción:</label>
+                        <textarea id="descripcion-producto" name="descripcion-producto" class="form-input"
+                            ></textarea>
+                    </div>
+                    <div>
+                        <label for="precio-producto" class="form-label">Precio:</label>
+                        <input type="number" id="precio-producto" name="precio-producto" class="form-input" >
+                    </div>
+                    <div>
+                        <label for="compra-maxima" class="form-label">Compra Máxima:</label>
+                        <input type="number" id="compra-maxima" name="compra-maxima" class="form-input" >
+                    </div>
+                    <div>
+                        <label for="producto-destacado" class="form-label">Producto Destacado:</label>
+                        <input type="checkbox" id="producto-destacado" name="producto-destacado" class="form-input">
+                    </div>
+                    <div>
+                        <label for="es-promocion" class="form-label">¿Es promoción?:</label>
+                        <input type="checkbox" id="es-promocion" name="es-promocion" class="form-input">
+                    </div>
+                    <div id="promocion-dates" style="display: none;">
+                        <div>
+                            <label for="fecha-desde" class="form-label">Fecha de desde:</label>
+                            <input type="date" id="fecha-desde" name="fecha-desde" class="form-input">
+                        </div>
+                        <div>
+                            <label for="fecha-hasta" class="form-label">Fecha de hasta:</label>
+                            <input type="date" id="fecha-hasta" name="fecha-hasta" class="form-input">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="requiere-edad" class="form-label">Requiere Chequeo de Edad:</label>
+                        <input type="checkbox" id="requiere-edad" name="requiere-edad" class="form-input">
+                    </div>
+                    <div>
+                        <label for="imagen-producto" class="form-label">Imagen del Producto (URL):</label>
+                        <input type="url" id="imagen-producto" name="imagen-producto" class="form-input" >
+                    </div>
+                    <button type="submit" class="add-section-btn">Guardar Producto</button>
+                </form>
+            </div>
+            <div class="form-section" id="form-option-group-section">
+                <button class="close-modal">X</button>
+                <h2>Nuevo Grupo de Opcionales</h2>
+                <form id="option-group-form">
+                    <div>
+                        <label for="nombre-grupo-opcional" class="form-label">Nombre del Grupo:</label>
+                        <input type="text" id="nombre-grupo-opcional" name="nombre-grupo-opcional"
+                            class="form-input" >
+                    </div>
+                    <div>
+                        <label class="form-label">Tipo de Selección:</label>
+                        <div>
+                            <input type="radio" id="min-max-radio" name="tipo-seleccion" value="min-max" checked>
+                            <label for="min-max-radio">Mínimo y Máximo</label>
+                        </div>
+                        <div id="min-max-options">
+                            <div>
+                                <label for="minimo-opciones" class="form-label">Mínimo de Opciones:</label>
+                                <input type="number" id="minimo-opciones" name="minimo-opciones"
+                                    class="form-input" >
+                            </div>
+                            <div>
+                                <label for="maximo-opciones" class="form-label">Máximo de Opciones:</label>
+                                <input type="number" id="maximo-opciones" name="maximo-opciones"
+                                    class="form-input" >
+                            </div>
+                        </div>
+                        <div>
+                            <input type="radio" id="cantidad-fija-radio" name="tipo-seleccion" value="cantidad-fija">
+                            <label for="cantidad-fija-radio">Cantidad Fija</label>
+                        </div>
+                        <div id="cantidad-fija-option" style="display: none;">
+                            <div>
+                                <label for="cantidad-fija" class="form-label">Cantidad Fija:</label>
+                                <input type="number" id="cantidad-fija" name="cantidad-fija" class="form-input"
+                                    >
+                            </div>
+                        </div>
+                        <div>
+                            <input type="radio" id="sin-limite-radio" name="tipo-seleccion" value="sin-limite">
+                            <label for="sin-limite-radio">Sin Límite</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="add-section-btn">Guardar Grupo de Opcionales</button>
+                </form>
+            </div>
+            <div class="form-section" id="form-option-item-section">
+                <button class="close-modal">X</button>
+                <h2>Nuevo Item de Opcional</h2>
+                <form id="option-item-form">
+                    <div>
+                        <label for="nombre-opcion" class="form-label">Nombre de la Opción:</label>
+                        <input type="text" id="nombre-opcion" name="nombre-opcion" class="form-input" >
+                    </div>
+                    <div>
+                        <label class="form-label">Tipo de Precio:</label>
+                        <div>
+                            <input type="radio" id="sin-costo-radio" name="tipo-precio" value="sin-costo" checked>
+                            <label for="sin-costo-radio">Sin Costo</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="suma-precio-radio" name="tipo-precio" value="suma-precio">
+                            <label for="suma-precio-radio">Suma al Precio</label>
+                        </div>
+                        <div id="suma-precio-option" style="display: none;">
+                            <div>
+                                <label for="precio-suma" class="form-label">Precio:</label>
+                                <input type="number" id="precio-suma" name="precio-suma" class="form-input"
+                                    >
+                            </div>
+                        </div>
+                        <div>
+                            <input type="radio" id="modifica-precio-radio" name="tipo-precio"
+                                value="modifica-precio">
+                            <label for="modifica-precio-radio">Modifica Precio</label>
+                        </div>
+                        <div id="modifica-precio-option" style="display: none;">
+                            <div>
+                                <label for="precio-modifica" class="form-label">Precio:</label>
+                                <input type="number" id="precio-modifica" name="precio-modifica"
+                                    class="form-input" >
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="cantidad-maxima" class="form-label">Cantidad Máxima:</label>
+                        <input type="number" id="cantidad-maxima" name="cantidad-maxima" class="form-input"
+                            >
+                    </div>
+                    <div>
+                        <label for="requiere-edad-opcion" class="form-label">Requiere Chequeo de Edad:</label>
+                        <input type="checkbox" id="requiere-edad-opcion" name="requiere-edad-opcion"
+                            class="form-input">
+                    </div>
+                    <button type="submit" class="add-section-btn">Guardar Item de Opcional</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let sections = JSON.parse(localStorage.getItem('sections')) || [];
+        let currentSectionId = null;
+        let currentProductId = null;
+        let currentOptionGroupId = null;
+
+        // Elementos del DOM
+        const addSectionButton = document.querySelector('.add-section-btn');
+        const formSection = document.getElementById('form-section');
+        const horariosContainer = document.getElementById('horarios-container');
+        const addHorarioButton = document.querySelector('.add-horario-btn');
+        const closeModalButton = document.querySelector('.close-modal');
+        const menuSectionsContainer = document.getElementById('menu-sections');
+        const exportButton = document.getElementById('export-btn');
+        const formProductSection = document.getElementById('form-product-section');
+        const productForm = document.getElementById('product-form');
+        const esPromocionCheckbox = document.getElementById('es-promocion');
+        const promocionDates = document.getElementById('promocion-dates');
+        const formOptionGroupSection = document.getElementById('form-option-group-section');
+        const optionGroupForm = document.getElementById('option-group-form');
+        const minMaxRadio = document.getElementById('min-max-radio');
+        const cantidadFijaRadio = document.getElementById('cantidad-fija-radio');
+        const minMaxOptions = document.getElementById('min-max-options');
+        const cantidadFijaOption = document.getElementById('cantidad-fija-option');
+        const formOptionItemSection = document.getElementById('form-option-item-section');
+        const optionItemForm = document.getElementById('option-item-form');
+        const sinCostoRadio = document.getElementById('sin-costo-radio');
+        const sumaPrecioRadio = document.getElementById('suma-precio-radio');
+        const modificaPrecioRadio = document.getElementById('modifica-precio-radio');
+        const sumaPrecioOption = document.getElementById('suma-precio-option');
+        const modificaPrecioOption = document.getElementById('modifica-precio-option');
+
+        // Inicializar el arreglo de productos para secciones preexistentes
+        function initializeProductArray() {
+            sections.forEach(section => {
+                if (!section.hasOwnProperty('productos')) {
+                    section.productos = [];
+                }
+                section.productos.forEach(product => {
+                    if (!product.hasOwnProperty('gruposOpcionales')) {
+                        product.gruposOpcionales = [];
+                    }
+                });
+            });
+            localStorage.setItem('sections', JSON.stringify(sections));
+        }
+
+        window.addEventListener('load', initializeProductArray);
+
+        // Abre el modal de sección
+        addSectionButton.addEventListener('click', () => {
+            formSection.style.display = 'block';
+        });
+
+        // Cierra el modal de sección
+        closeModalButton.addEventListener('click', () => {
+            formSection.style.display = 'none';
+            formProductSection.style.display = 'none';
+            formOptionGroupSection.style.display = 'none';
+            formOptionItemSection.style.display = 'none';
+        });
+
+        // Agrega un nuevo horario al formulario de sección
+        addHorarioButton.addEventListener('click', () => {
+            const horarioItem = document.createElement('div');
+            horarioItem.classList.add('horario-item');
+
+            // Día
+            const diaSelect = document.createElement('select');
+            diaSelect.innerHTML = `
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="Mi">Mi</option>
+                <option value="J">J</option>
+                <option value="V">V</option>
+                <option value="S">S</option>
+                <option value="D">D</option>
+                <option value="Todos">Todos</option>
+            `;
+            horarioItem.appendChild(diaSelect);
+
+            // Hora inicio
+            const horaInicioInput = document.createElement('input');
+            horaInicioInput.type = 'time';
+            horaInicioInput.classList.add('form-input');
+            horarioItem.appendChild(horaInicioInput);
+
+            // Hora fin
+            const horaFinInput = document.createElement('input');
+            horaFinInput.type = 'time';
+            horaFinInput.classList.add('form-input');
+            horarioItem.appendChild(horaFinInput);
+
+            // Botón para eliminar el horario
+            const removeHorarioButton = document.createElement('button');
+            removeHorarioButton.classList.add('remove-horario-btn');
+            removeHorarioButton.textContent = 'Eliminar';
+            removeHorarioButton.addEventListener('click', () => {
+                horariosContainer.removeChild(horarioItem);
+            });
+            horarioItem.appendChild(removeHorarioButton);
+
+            horariosContainer.appendChild(horarioItem);
+        });
+
+        // Maneja el envío del formulario de sección
+        const sectionForm = document.getElementById('section-form');
+        sectionForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Obtén los datos del formulario
+            const nombreMenu = document.getElementById('nombre-menu').value;
+            const imagenMenu = document.getElementById('imagen-menu').value;
+            const imagenBanner = document.getElementById('imagen-banner').value;
+            const horarios = [];
+
+            // Recorre los horarios y almacena sus datos
+            const horarioItems = horariosContainer.querySelectorAll('.horario-item');
+            horarioItems.forEach(item => {
+                const dia = item.querySelector('select').value;
+                const horaInicio = item.querySelector('input[type="time"]').value;
+                const horaFin = item.querySelector('input[type="time"]').value;
+                horarios.push({ dia, horaInicio, horaFin });
+            });
+
+            // Guarda los datos en la base de datos local
+            let sections = JSON.parse(localStorage.getItem('sections')) || [];
+            const newSection = {
+                id: Date.now(), // Genera un ID único basado en la fecha y hora
+                nombre: nombreMenu,
+                imagenMenu: imagenMenu,
+                imagenBanner: imagenBanner,
+                horarios: horarios,
+                productos: [] // Inicializa el arreglo de productos vacío
+            };
+            sections.push(newSection);
+            localStorage.setItem('sections', JSON.stringify(sections));
+
+            // Cierra el modal
+            formSection.style.display = 'none';
+
+            // Limpia el formulario
+            sectionForm.reset();
+            horariosContainer.innerHTML = ''; // Borra los horarios existentes
+
+            // Actualiza la lista de secciones
+            renderSections();
+        });
+
+        // Maneja el envío del formulario de producto
+        productForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Obtén los datos del formulario
+            const nombreProducto = document.getElementById('nombre-producto').value;
+            const descripcionProducto = document.getElementById('descripcion-producto').value;
+            const precioProducto = document.getElementById('precio-producto').value;
+            const compraMaxima = document.getElementById('compra-maxima').value;
+            const productoDestacado = document.getElementById('producto-destacado').checked;
+            const esPromocion = document.getElementById('es-promocion').checked;
+            const fechaDesde = document.getElementById('fecha-desde').value;
+            const fechaHasta = document.getElementById('fecha-hasta').value;
+            const requiereEdad = document.getElementById('requiere-edad').checked;
+            const imagenProducto = document.getElementById('imagen-producto').value;
+
+            // Guarda los datos en la base de datos local
+            let sections = JSON.parse(localStorage.getItem('sections')) || [];
+
+            // Encuentra la sección actual
+            const sectionIndex = sections.findIndex(section => section.id === currentSectionId);
+
+            if (sectionIndex !== -1) {
+                // La sección actual existe, agrega el producto
+                const newProduct = {
+                    id: Date.now(),
+                    nombre: nombreProducto,
+                    descripcion: descripcionProducto,
+                    precio: parseInt(precioProducto),
+                    compraMaxima: parseInt(compraMaxima),
+                    destacado: productoDestacado,
+                    esPromocion: esPromocion,
+                    fechaDesde: fechaDesde,
+                    fechaHasta: fechaHasta,
+                    requiereEdad: requiereEdad,
+                    imagen: imagenProducto,
+                    gruposOpcionales: [] // Inicializa el arreglo de grupos opcionales vacío
+                };
+                sections[sectionIndex].productos.push(newProduct); // Agrega el producto
+            } else {
+                // La sección actual no existe, crea una nueva sección con el producto
+                const newSection = {
+                    id: currentSectionId, // Utiliza el ID actual
+                    nombre: 'Nueva Sección', // O el nombre que desees
+                    imagenMenu: '',
+                    imagenBanner: '',
+                    horarios: [],
+                    productos: [
+                        {
+                            id: Date.now(),
+                            nombre: nombreProducto,
+                            descripcion: descripcionProducto,
+                            precio: parseInt(precioProducto),
+                            compraMaxima: parseInt(compraMaxima),
+                            destacado: productoDestacado,
+                            esPromocion: esPromocion,
+                            fechaDesde: fechaDesde,
+                            fechaHasta: fechaHasta,
+                            requiereEdad: requiereEdad,
+                            imagen: imagenProducto,
+                            gruposOpcionales: [] // Inicializa el arreglo de grupos opcionales vacío
+                        }
+                    ] // Crea el arreglo de productos e incluye el nuevo producto
+                };
+                sections.push(newSection); // Agrega la nueva sección
+            }
+
+            localStorage.setItem('sections', JSON.stringify(sections));
+
+            // Cierra el modal
+            formProductSection.style.display = 'none';
+
+            // Limpia el formulario
+            productForm.reset();
+
+            // Oculta los campos de la promoción si es necesario
+            promocionDates.style.display = 'none';
+
+            // Actualiza la lista de secciones
+            renderSections();
+        });
+
+        // Maneja el checkbox de "Es promoción"
+        esPromocionCheckbox.addEventListener('change', () => {
+            if (esPromocionCheckbox.checked) {
+                promocionDates.style.display = 'block';
+            } else {
+                promocionDates.style.display = 'none';
+            }
+        });
+
+        // Maneja el cambio en los radio buttons de tipo de selección en el formulario de grupo de opcionales
+        minMaxRadio.addEventListener('change', () => {
+            minMaxOptions.style.display = 'block';
+            cantidadFijaOption.style.display = 'none';
+        });
+
+        cantidadFijaRadio.addEventListener('change', () => {
+            minMaxOptions.style.display = 'none';
+            cantidadFijaOption.style.display = 'block';
+        });
+
+        // Maneja el cambio en los radio buttons de tipo de precio en el formulario de item de opcional
+        sinCostoRadio.addEventListener('change', () => {
+            sumaPrecioOption.style.display = 'none';
+            modificaPrecioOption.style.display = 'none';
+        });
+
+        sumaPrecioRadio.addEventListener('change', () => {
+            sumaPrecioOption.style.display = 'block';
+            modificaPrecioOption.style.display = 'none';
+        });
+
+        modificaPrecioRadio.addEventListener('change', () => {
+            sumaPrecioOption.style.display = 'none';
+            modificaPrecioOption.style.display = 'block';
+        });
+
+
+// Función para renderizar las secciones en la interfaz
+function renderSections() {
+  // No borres el contenido del contenedor
+  // menuSectionsContainer.innerHTML = ''; 
+
+  sections.forEach(section => {
+    const sectionElement = document.createElement('div');
+    sectionElement.classList.add('menu-section');
+
+    // Agrega el título de la sección
+    const sectionTitle = document.createElement('h3');
+    sectionTitle.textContent = section.nombre;
+    sectionElement.appendChild(sectionTitle);
+
+    // Agrega el botón para agregar productos
+    const addProductButton = document.createElement('button');
+    addProductButton.classList.add('add-product-btn');
+    addProductButton.textContent = '+ Producto';
+    addProductButton.addEventListener('click', () => {
+                    currentSectionId = section.id;
+                    formProductSection.style.display = 'block';
+                });
+    sectionElement.appendChild(addProductButton);
+
+    // Agrega la imagen de la sección
+    const sectionImage = document.createElement('img');
+    sectionImage.classList.add('section-image');
+    sectionImage.src = section.imagenBanner;
+    sectionElement.appendChild(sectionImage);
+
+    // Agrega un contenedor para los productos
+    const productsContainer = document.createElement('div');
+    productsContainer.id = `products-container-${section.id}`;
+    sectionElement.appendChild(productsContainer);
+
+    // Llama a la función renderProducts para renderizar los productos de la sección
+    renderProducts(section.id, productsContainer);
+
+    menuSectionsContainer.appendChild(sectionElement);
+  })}
+        // Función para renderizar los productos dentro de una sección
+        function renderProducts(sectionId, productsContainer) {
+            console.log(`Iniciando renderizado de productos para la sección con ID: ${sectionId}`);
+            productsContainer.innerHTML = '';
+
+            const section = sections.find(s => s.id === sectionId);
+            if (section) {
+                console.log(`Se encontró la sección: ${section.nombre} con ID: ${sectionId}`);
+                section.productos.forEach(product => {
+                    console.log(`Renderizando producto: ${product.nombre} con ID: ${product.id}`);
+                    const productElement = document.createElement('div');
+                    productElement.classList.add('product');
+                    productElement.textContent = product.nombre + " - $"+product.precio;
+
+        
+
+                    
+                    // Agrega el botón para agregar grupos de opcionales
+                    const addOptionGroupButton = document.createElement('button');
+                    addOptionGroupButton.classList.add('add-product-btn');
+                    addOptionGroupButton.textContent = '+ Grupo Opc.';
+                    addOptionGroupButton.addEventListener('click', () => {
+                        console.log(`Botón '+ Grupo Opc.' clickeado para producto ID: ${product.id}`);
+                        currentSectionId = sectionId; // Se necesita el ID de la sección actual
+                        currentProductId = product.id;
+                        formOptionGroupSection.style.display = 'block';
+                    });
+                    productElement.appendChild(addOptionGroupButton);
+
+                    // Agrega un contenedor para los grupos de opcionales
+                    const optionGroupsContainer = document.createElement('div');
+                    optionGroupsContainer.id = `option-groups-container-${product.id}`;
+                    productElement.appendChild(optionGroupsContainer);
+
+                    // Renderiza los grupos de opcionales
+                    console.log(`Renderizando grupos de opcionales para producto ID: ${product.id} en sección ID: ${sectionId}`);
+                    renderOptionGroups(product.id, optionGroupsContainer, sectionId); // Pasa el ID de la sección
+
+                    productsContainer.appendChild(productElement);
+                });
+            } else {
+                console.log(`No se encontró la sección con ID: ${sectionId}`);
+            }
+        }
+
+        // Función para renderizar los grupos de opcionales dentro de un producto
+        function renderOptionGroups(productId, optionGroupsContainer, sectionId) {
+            console.log(`Iniciando renderizado de grupos de opcionales para el producto con ID: ${productId} en la sección con ID: ${sectionId}`);
+            optionGroupsContainer.innerHTML = '';
+
+            const section = sections.find(s => s.id === sectionId); // Encuentra la sección correcta
+            if (section) {
+                const product = section.productos.find(p => p.id === productId); // Encuentra el producto correcto
+                if (product) {
+                    if (product.gruposOpcionales.length > 0) {
+                        console.log(`Se encontraron ${product.gruposOpcionales.length} grupos de opcionales para el producto con ID: ${productId}`);
+                        product.gruposOpcionales.forEach(optionGroup => {
+                            const optionGroupElement = document.createElement('div');
+                            optionGroupElement.classList.add('option-group');
+                            optionGroupElement.textContent = optionGroup.nombre;
+
+                            // Agrega el botón para agregar items de opcionales
+                            const addOptionItemButton = document.createElement('button');
+                            addOptionItemButton.classList.add('add-product-btn');
+                            addOptionItemButton.textContent = '+ Item Opc.';
+                            addOptionItemButton.addEventListener('click', () => {
+                                console.log(`Botón '+ Item Opc.' clickeado para grupo de opcionales ID: ${optionGroup.id}`);
+                                currentOptionGroupId = optionGroup.id;
+                                currentProductId = product.id; // Asegúrate de asignar el product ID
+                                currentSectionId = section.id; // Asegúrate de asignar el section ID
+                                formOptionItemSection.style.display = 'block';
+                            });
+                            optionGroupElement.appendChild(addOptionItemButton);
+
+                            // Agrega un contenedor para los items de opcionales
+                            const optionItemsContainer = document.createElement('div');
+                            optionItemsContainer.id = `option-items-container-${optionGroup.id}`;
+                            optionGroupElement.appendChild(optionItemsContainer);
+
+                            // Renderiza los items de opcionales
+                            renderOptionItems(optionGroup.id, optionItemsContainer,sectionId,productId);
+
+                            optionGroupsContainer.appendChild(optionGroupElement);
+                        });
+                    } else {
+                        console.log(`No se encontraron grupos de opcionales para el producto con ID: ${productId}`);
+                    }
+                } else {
+                    console.log(`No se encontró el producto con ID: ${productId}`);
+                }
+            } else {
+                console.log(`No se encontró la sección con ID: ${sectionId}`);
+            }
+        }
+
+        // Función para renderizar los items de opcionales dentro de un grupo de opcionales
+        function renderOptionItems(optionGroupId, optionItemsContainer,currentSectionId,currentProductId) {
+            console.log(`Iniciando renderizado de items de opcionales para el grupo con ID: ${optionGroupId}`);
+            optionItemsContainer.innerHTML = ''; // Limpia el contenedor de items de opcionales
+
+            if (currentSectionId === null) {
+                console.error('currentSectionId es null');
+            }
+
+            const section = sections.find(s => s.id === currentSectionId); // Encuentra la sección correcta
+            if (section) {
+                console.log(`Se encontró la sección: ${section.nombre} con ID: ${currentSectionId}`);
+                const product = section.productos.find(p => p.id === currentProductId); // Encuentra el producto correcto
+                if (product) {
+                    console.log(`Se encontró el producto: ${product.nombre} con ID: ${currentProductId}`);
+                    const optionGroup = product.gruposOpcionales.find(og => og.id === optionGroupId); // Encuentra el grupo de opciones correcto
+                    if (optionGroup) {
+                        if (optionGroup.items.length > 0) {
+                            console.log(`Se encontraron ${optionGroup.items.length} items de opcionales para el grupo con ID: ${optionGroupId}`);
+                            optionGroup.items.forEach(optionItem => {
+                                console.log(`Renderizando item de opcional: ${optionItem.nombre} con ID: ${optionItem.id}`);
+                                const optionItemElement = document.createElement('div');
+                                optionItemElement.classList.add('option-item');
+                                optionItemElement.textContent = optionItem.nombre;
+                                optionItemsContainer.appendChild(optionItemElement);
+                            });
+                        } else {
+                            console.log(`No se encontraron items de opcionales para el grupo con ID: ${optionGroupId}`);
+                        }
+                    } else {
+                        console.log(`No se encontró el grupo de opcionales con ID: ${optionGroupId}`);
+                    }
+                } else {
+                    console.log(`No se encontró el producto con ID: ${currentProductId}`);
+                }
+            } else {
+                console.log(`No se encontró la sección con ID: ${currentSectionId}`);
+            }
+        }
+
+        // Maneja el envío del formulario de grupo de opcionales
+        optionGroupForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Obtiene los datos del formulario
+        const nombreGrupoOpcional = document.getElementById('nombre-grupo-opcional').value;
+        const tipoSeleccion = document.querySelector('input[name="tipo-seleccion"]:checked').value;
+        let minimoOpciones = null;
+        let maximoOpciones = null;
+        let cantidadFija = null;
+
+        if (tipoSeleccion === 'min-max') {
+            minimoOpciones = parseInt(document.getElementById('minimo-opciones').value);
+            maximoOpciones = parseInt(document.getElementById('maximo-opciones').value);
+        } else if (tipoSeleccion === 'cantidad-fija') {
+            cantidadFija = parseInt(document.getElementById('cantidad-fija').value);
+        }
+
+        // Verifica que currentSectionId esté correctamente definido
+            console.log('currentSectionId:', currentSectionId);
+            console.log('sections:', sections);
+
+        // Encuentra la sección y el producto actuales
+        const section = sections.find(s => s.id === currentSectionId);
+        if (!section) {
+            console.error('Sección no encontrada');
+            return;
+        }
+        const product = section.productos.find(p => p.id === currentProductId);
+        if (!product) {
+            console.error('Producto no encontrado');
+            return;
+        }
+
+        // Crea el nuevo grupo de opcionales
+        const newOptionGroup = {
+            id: Date.now(),
+            nombre: nombreGrupoOpcional,
+            tipoSeleccion: tipoSeleccion,
+            minimoOpciones: minimoOpciones,
+            maximoOpciones: maximoOpciones,
+            cantidadFija: cantidadFija,
+            items: [] // Inicializa el arreglo de items vacío
+        };
+
+        // Agrega el grupo de opcionales al producto
+        product.gruposOpcionales = product.gruposOpcionales || [];
+        product.gruposOpcionales.push(newOptionGroup);
+
+        // Guarda los datos en localStorage
+        localStorage.setItem('sections', JSON.stringify(sections));
+
+        // Cierra el modal
+        formOptionGroupSection.style.display = 'none';
+
+        // Limpia el formulario
+        optionGroupForm.reset();
+        minMaxOptions.style.display = 'block';
+        cantidadFijaOption.style.display = 'none';
+
+        // Actualiza la lista de grupos de opcionales
+        renderOptionGroups(currentProductId, document.getElementById(`option-groups-container-${currentProductId}`));
+        });
+
+        // Maneja el envío del formulario de item de opcional
+        optionItemForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Obtiene los datos del formulario
+        const nombreOpcion = document.getElementById('nombre-opcion').value;
+        const tipoPrecio = document.querySelector('input[name="tipo-precio"]:checked').value;
+        let precio = null;
+        if (tipoPrecio === 'suma-precio' || tipoPrecio === 'modifica-precio') {
+            precio = parseInt(document.getElementById(tipoPrecio === 'suma-precio' ? 'precio-suma' : 'precio-modifica').value);
+        }
+        const cantidadMaxima = parseInt(document.getElementById('cantidad-maxima').value);
+        const requiereEdadOpcion = document.getElementById('requiere-edad-opcion').checked;
+
+        // Encuentra la sección, producto y grupo de opcionales actuales
+        const section = sections.find(s => s.id === currentSectionId);
+        if (!section) {
+            console.error('Sección no encontrada');
+            return;
+        }
+        const product = section.productos.find(p => p.id === currentProductId);
+        if (!product) {
+            console.error('Producto no encontrado');
+            return;
+        }
+        const optionGroup = product.gruposOpcionales.find(og => og.id === currentOptionGroupId);
+        if (!optionGroup) {
+            console.error('Grupo de opcionales no encontrado');
+            return;
+        }
+
+        // Crea el nuevo item de opcional
+        const newOptionItem = {
+            id: Date.now(),
+            nombre: nombreOpcion,
+            tipoPrecio: tipoPrecio,
+            precio: precio,
+            cantidadMaxima: cantidadMaxima,
+            requiereEdad: requiereEdadOpcion
+        };
+
+        // Agrega el item de opcional al grupo de opcionales
+        optionGroup.items.push(newOptionItem);
+
+        // Guarda los datos en localStorage
+        localStorage.setItem('sections', JSON.stringify(sections));
+
+        // Cierra el modal
+        formOptionItemSection.style.display = 'none';
+
+        // Limpia el formulario
+        optionItemForm.reset();
+        sumaPrecioOption.style.display = 'none';
+        modificaPrecioOption.style.display = 'none';
+
+        // Actualiza la lista de items de opcionales
+        renderOptionItems(currentOptionGroupId, document.getElementById(`option-items-container-${currentOptionGroupId}`));
+        });
+
+        // Función para exportar a Excel
+        exportButton.addEventListener('click', () => {
+            const sections = JSON.parse(localStorage.getItem('sections')) || [];
+
+            // Crea un objeto de hoja de cálculo
+            const workbook = XLSX.utils.book_new();
+
+            // Crea una hoja de trabajo para las secciones
+            const sectionsWorksheet = XLSX.utils.aoa_to_sheet([
+                ['ID', 'Nombre del Menú', 'Imagen del Menú', 'Imagen Banner', 'Día', 'Hora Inicio', 'Hora Fin'],
+                ...sections.flatMap(section => {
+                    return [
+                        [section.id, section.nombre, section.imagenMenu, section.imagenBanner],
+                        ...section.horarios.map(horario => [null, null, null, null, horario.dia, horario.horaInicio, horario.horaFin])
+                    ];
+                })
+            ]);
+            XLSX.utils.book_append_sheet(workbook, sectionsWorksheet, 'Secciones');
+
+            // Crea una hoja de trabajo para los productos
+            const productsWorksheet = XLSX.utils.aoa_to_sheet([
+                ['ID Sección', 'ID Producto', 'Nombre del Producto', 'Descripción', 'Precio', 'Compra Máxima', 'Destacado', 'Promoción', 'Fecha Desde', 'Fecha Hasta', 'Requiere Edad', 'Imagen del Producto'],
+                ...sections.flatMap(section => {
+                    return section.productos.map(product => {
+                        return [
+                            section.id,
+                            product.id,
+                            product.nombre,
+                            product.descripcion,
+                            product.precio,
+                            product.compraMaxima,
+                            product.destacado ? 'Sí' : 'No',
+                            product.esPromocion ? 'Sí' : 'No',
+                            product.fechaDesde,
+                            product.fechaHasta,
+                            product.requiereEdad ? 'Sí' : 'No',
+                            product.imagen
+                        ];
+                    });
+                })
+            ]);
+            XLSX.utils.book_append_sheet(workbook, productsWorksheet, 'Productos');
+
+            // Crea una hoja de trabajo para los grupos de opcionales
+            const optionGroupsWorksheet = XLSX.utils.aoa_to_sheet([
+                ['ID Sección', 'ID Producto', 'ID Grupo Opcional', 'Nombre del Grupo', 'Tipo de Selección', 'Mínimo Opciones', 'Máximo Opciones', 'Cantidad Fija'],
+                ...sections.flatMap(section => {
+                    return section.productos.flatMap(product => {
+                        return (product.gruposOpcionales || []).map(optionGroup => {
+                            return [
+                                section.id,
+                                product.id,
+                                optionGroup.id,
+                                optionGroup.nombre,
+                                optionGroup.tipoSeleccion,
+                                optionGroup.minimoOpciones,
+                                optionGroup.maximoOpciones,
+                                optionGroup.cantidadFija
+                            ];
+                        });
+                    });
+                })
+            ]);
+            XLSX.utils.book_append_sheet(workbook, optionGroupsWorksheet, 'Grupos de Opcionales');
+
+            // Crea una hoja de trabajo para los items de opcionales
+            const optionItemsWorksheet = XLSX.utils.aoa_to_sheet([
+                ['ID Sección', 'ID Producto', 'ID Grupo Opcional', 'ID Item Opcional', 'Nombre de la Opción', 'Tipo de Precio', 'Precio', 'Cantidad Máxima', 'Requiere Edad'],
+                ...sections.flatMap(section => {
+                    return section.productos.flatMap(product => {
+                        return (product.gruposOpcionales || []).flatMap(optionGroup => {
+                            return optionGroup.items.map                            (optionItem => {
+                                return [
+                                    section.id,
+                                    product.id,
+                                    optionGroup.id,
+                                    optionItem.id,
+                                    optionItem.nombre,
+                                    optionItem.tipoPrecio,
+                                    optionItem.precio,
+                                    optionItem.cantidadMaxima,
+                                    optionItem.requiereEdad ? 'Sí' : 'No'
+                                ];
+                            });
+                        });
+                    });
+                })
+            ]);
+            XLSX.utils.book_append_sheet(workbook, optionItemsWorksheet, 'Items de Opcionales');
+
+            // Genera el archivo Excel
+            XLSX.writeFile(workbook, 'menu_data.xlsx');
+        });
+
+        // Renderiza las secciones al cargar la página
+        renderSections();
+
+                   // Selecciona todos los botones de cerrar modal
+                   const closeModalButtons = document.querySelectorAll('.close-modal');
+
+// Recorre todos los botones y asigna el evento a cada uno
+closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const parentContainer = button.closest('div'); // Ajusta el selector según sea necesario
+        parentContainer.style.display = 'none'; // Oculta el contenedor padre
+    });
+});
+
+    </script>
+
+    <!-- Agrega la biblioteca XLSX -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</body>
