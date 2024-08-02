@@ -26,15 +26,15 @@
                 <form id="section-form">
                     <div>
                         <label for="nombre-menu" class="form-label">Nombre del Menú:</label>
-                        <input type="text" id="nombre-menu" name="nombre-menu" class="form-input" >
+                        <input type="text" id="nombre-menu" name="nombre-menu" class="form-input" required>
                     </div>
                     <div>
                         <label for="imagen-menu" class="form-label">Imagen del Menú (URL):</label>
-                        <input type="url" id="imagen-menu" name="imagen-menu" class="form-input" >
+                        <input type="url" id="imagen-menu" name="imagen-menu" class="form-input" required>
                     </div>
                     <div>
                         <label for="imagen-banner" class="form-label">Imagen Banner (URL):</label>
-                        <input type="url" id="imagen-banner" name="imagen-banner" class="form-input" >
+                        <input type="url" id="imagen-banner" name="imagen-banner" class="form-input" required>
                     </div>
                     <div>
                         <button type="button" class="add-horario-btn">Agregar Horario</button>
@@ -51,20 +51,20 @@
                 <form id="product-form">
                     <div>
                         <label for="nombre-producto" class="form-label">Nombre del Producto:</label>
-                        <input type="text" id="nombre-producto" name="nombre-producto" class="form-input" >
+                        <input type="text" id="nombre-producto" name="nombre-producto" class="form-input" required>
                     </div>
                     <div>
                         <label for="descripcion-producto" class="form-label">Descripción:</label>
                         <textarea id="descripcion-producto" name="descripcion-producto" class="form-input"
-                            ></textarea>
+                            required></textarea>
                     </div>
                     <div>
                         <label for="precio-producto" class="form-label">Precio:</label>
-                        <input type="number" id="precio-producto" name="precio-producto" class="form-input" >
+                        <input type="number" id="precio-producto" name="precio-producto" class="form-input" required>
                     </div>
                     <div>
                         <label for="compra-maxima" class="form-label">Compra Máxima:</label>
-                        <input type="number" id="compra-maxima" name="compra-maxima" class="form-input" >
+                        <input type="number" id="compra-maxima" name="compra-maxima" class="form-input" required>
                     </div>
                     <div>
                         <label for="producto-destacado" class="form-label">Producto Destacado:</label>
@@ -90,7 +90,7 @@
                     </div>
                     <div>
                         <label for="imagen-producto" class="form-label">Imagen del Producto (URL):</label>
-                        <input type="url" id="imagen-producto" name="imagen-producto" class="form-input" >
+                        <input type="url" id="imagen-producto" name="imagen-producto" class="form-input" required>
                     </div>
                     <button type="submit" class="add-section-btn">Guardar Producto</button>
                 </form>
@@ -102,7 +102,7 @@
                     <div>
                         <label for="nombre-grupo-opcional" class="form-label">Nombre del Grupo:</label>
                         <input type="text" id="nombre-grupo-opcional" name="nombre-grupo-opcional"
-                            class="form-input" >
+                            class="form-input" required>
                     </div>
                     <div>
                         <label class="form-label">Tipo de Selección:</label>
@@ -114,12 +114,12 @@
                             <div>
                                 <label for="minimo-opciones" class="form-label">Mínimo de Opciones:</label>
                                 <input type="number" id="minimo-opciones" name="minimo-opciones"
-                                    class="form-input" >
+                                    class="form-input" required>
                             </div>
                             <div>
                                 <label for="maximo-opciones" class="form-label">Máximo de Opciones:</label>
                                 <input type="number" id="maximo-opciones" name="maximo-opciones"
-                                    class="form-input" >
+                                    class="form-input" required>
                             </div>
                         </div>
                         <div>
@@ -130,7 +130,7 @@
                             <div>
                                 <label for="cantidad-fija" class="form-label">Cantidad Fija:</label>
                                 <input type="number" id="cantidad-fija" name="cantidad-fija" class="form-input"
-                                    >
+                                    required>
                             </div>
                         </div>
                         <div>
@@ -147,7 +147,7 @@
                 <form id="option-item-form">
                     <div>
                         <label for="nombre-opcion" class="form-label">Nombre de la Opción:</label>
-                        <input type="text" id="nombre-opcion" name="nombre-opcion" class="form-input" >
+                        <input type="text" id="nombre-opcion" name="nombre-opcion" class="form-input" required>
                     </div>
                     <div>
                         <label class="form-label">Tipo de Precio:</label>
@@ -163,7 +163,7 @@
                             <div>
                                 <label for="precio-suma" class="form-label">Precio:</label>
                                 <input type="number" id="precio-suma" name="precio-suma" class="form-input"
-                                    >
+                                    required>
                             </div>
                         </div>
                         <div>
@@ -175,14 +175,14 @@
                             <div>
                                 <label for="precio-modifica" class="form-label">Precio:</label>
                                 <input type="number" id="precio-modifica" name="precio-modifica"
-                                    class="form-input" >
+                                    class="form-input" required>
                             </div>
                         </div>
                     </div>
                     <div>
                         <label for="cantidad-maxima" class="form-label">Cantidad Máxima:</label>
                         <input type="number" id="cantidad-maxima" name="cantidad-maxima" class="form-input"
-                            >
+                            required>
                     </div>
                     <div>
                         <label for="requiere-edad-opcion" class="form-label">Requiere Chequeo de Edad:</label>
@@ -464,46 +464,49 @@
         });
 
 
-// Función para renderizar las secciones en la interfaz
-function renderSections() {
-  // No borres el contenido del contenedor
-  // menuSectionsContainer.innerHTML = ''; 
+        // Función para renderizar las secciones en la interfaz
+        function renderSections() {
+            menuSectionsContainer.innerHTML = '';
 
-  sections.forEach(section => {
-    const sectionElement = document.createElement('div');
-    sectionElement.classList.add('menu-section');
+            sections.forEach(section => {
+                const sectionElement = document.createElement('div');
+                sectionElement.classList.add('menu-section');
+                sectionElement.textContent = section.nombre;
 
-    // Agrega el título de la sección
-    const sectionTitle = document.createElement('h3');
-    sectionTitle.textContent = section.nombre;
-    sectionElement.appendChild(sectionTitle);
-
-    // Agrega el botón para agregar productos
-    const addProductButton = document.createElement('button');
-    addProductButton.classList.add('add-product-btn');
-    addProductButton.textContent = '+ Producto';
-    addProductButton.addEventListener('click', () => {
+                // Agrega el botón para agregar productos
+                const addProductButton = document.createElement('button');
+                addProductButton.classList.add('add-product-btn');
+                addProductButton.textContent = '+ Producto';
+                addProductButton.addEventListener('click', () => {
                     currentSectionId = section.id;
                     formProductSection.style.display = 'block';
                 });
-    sectionElement.appendChild(addProductButton);
+                sectionElement.appendChild(addProductButton);
 
-    // Agrega la imagen de la sección
-    const sectionImage = document.createElement('img');
-    sectionImage.classList.add('section-image');
-    sectionImage.src = section.imagenBanner;
-    sectionElement.appendChild(sectionImage);
+                // Agrega un contenedor para los productos
+                const productsContainer = document.createElement('div');
+                productsContainer.id = `products-container-${section.id}`;
+                sectionElement.appendChild(productsContainer);
 
-    // Agrega un contenedor para los productos
-    const productsContainer = document.createElement('div');
-    productsContainer.id = `products-container-${section.id}`;
-    sectionElement.appendChild(productsContainer);
+                // Renderiza los productos
+                renderProducts(section.id, productsContainer);
 
-    // Llama a la función renderProducts para renderizar los productos de la sección
-    renderProducts(section.id, productsContainer);
+                menuSectionsContainer.appendChild(sectionElement);
+            });
+        
+            // Selecciona todos los botones de cerrar modal
+            const closeModalButtons = document.querySelectorAll('.close-modal');
 
-    menuSectionsContainer.appendChild(sectionElement);
-  })}
+            // Recorre todos los botones y asigna el evento a cada uno
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const parentContainer = button.closest('div'); // Ajusta el selector según sea necesario
+                    parentContainer.style.display = 'none'; // Oculta el contenedor padre
+                });
+            }); 
+        
+        }
+
         // Función para renderizar los productos dentro de una sección
         function renderProducts(sectionId, productsContainer) {
             console.log(`Iniciando renderizado de productos para la sección con ID: ${sectionId}`);
@@ -518,9 +521,6 @@ function renderSections() {
                     productElement.classList.add('product');
                     productElement.textContent = product.nombre + " - $"+product.precio;
 
-        
-
-                    
                     // Agrega el botón para agregar grupos de opcionales
                     const addOptionGroupButton = document.createElement('button');
                     addOptionGroupButton.classList.add('add-product-btn');
@@ -858,17 +858,6 @@ function renderSections() {
 
         // Renderiza las secciones al cargar la página
         renderSections();
-
-                   // Selecciona todos los botones de cerrar modal
-                   const closeModalButtons = document.querySelectorAll('.close-modal');
-
-// Recorre todos los botones y asigna el evento a cada uno
-closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const parentContainer = button.closest('div'); // Ajusta el selector según sea necesario
-        parentContainer.style.display = 'none'; // Oculta el contenedor padre
-    });
-});
 
     </script>
 
